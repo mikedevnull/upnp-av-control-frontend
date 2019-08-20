@@ -8,6 +8,7 @@ const store = new Vuex.Store({
   state: {
     available_renderers: [],
     active_player: null,
+    volume: 0
   },
   mutations: {
     set_available_renderers(state, renderers) {
@@ -16,6 +17,10 @@ const store = new Vuex.Store({
     set_active_player(state, player) {
       state.active_player = player
     },
+    set_volume(state, volume) {
+      state.volume = volume
+    }
+  },
   actions: {
     async update_available_renderers(context) {
       let devices = await upnpapi.getMediaRenderers()

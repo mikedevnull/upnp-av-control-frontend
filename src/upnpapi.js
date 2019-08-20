@@ -22,6 +22,14 @@ export default {
       })
       .catch(error => console.log(error));
   },
+  setCurrentVolume(volume_percent) {
+    const url = '/player/volume';
+    return upnpApi
+      .put(url, {
+        volume_percent: volume_percent
+      })
+      .catch(error => console.log(error));
+  },
   getCurrentPlaybackInfo() {
     const url = '/player';
     return upnpApi
