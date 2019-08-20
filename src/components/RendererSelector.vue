@@ -1,7 +1,7 @@
 <template>
   <v-select
     label="Renderer"
-    v-model="active_renderer"
+    v-model="active_player"
     :items="available_renderers"
     item-text="name"
     item-value="udn"
@@ -11,26 +11,26 @@
 
 <script>
 import ControlPoint from "../upnpapi";
+import { mapState } from 'vuex'
 
 export default {
   data: () => ({
-    available_renderers: null,
-    active_renderer: null
   }),
   methods: {
     selectRenderer(value) {
-      console.log(value);
-      ControlPoint.setActiveRenderer(value);
+      ControlPoint.setActiveRenderer(value).then(() => this.$store.dispatch('update_playback_info'))
     }
   },
-  mounted: function() {
-    ControlPoint.getMediaRenderers().then(
-      devices => (this.available_renderers = devices)
-    );
-    ControlPoint.getCurrentPlaybackInfo().then(info => {
-      console.log(info);
-      this.active_renderer = info.player;
-    });
+  computed: {...mapState(['available_renderers']),
+    active_player: {
+      get: function() {
+        return this.$store.state.active_player
+       },
+      set: function(udn) {
+         ControlPoint.setActiveRenderer(udn) 
+       }
+
+    }
   }
 };
 </script>
