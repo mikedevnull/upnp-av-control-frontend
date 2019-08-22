@@ -14,6 +14,13 @@ export default {
       .then(response => response.data.data)
       .catch(error => console.log(error));
   },
+  getLibraryDevices() {
+    const url = '/library/devices';
+    return upnpApi
+      .get(url)
+      .then(response => response.data.data)
+      .catch(error => console.log(error));
+  },
   setActiveRenderer(udn) {
     const url = '/player/device';
     return upnpApi

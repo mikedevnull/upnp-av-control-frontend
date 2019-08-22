@@ -18,6 +18,7 @@ class ControlPointEventBus {
 
   updateStoreData() {
     this.store.dispatch('update_available_renderers')
+    this.store.dispatch('update_available_servers')
     this.store.dispatch('update_playback_info')
   }
 }
