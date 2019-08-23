@@ -1,10 +1,5 @@
 <template>
 	<div>
-		<div>
-			<v-btn icon @click="selectedMediaserver=undefined">
-				<v-icon large>mdi-home</v-icon>
-			</v-btn>
-		</div>
 		<MediaLibraryDeviceList v-if="selectedMediaserver === undefined" v-on:onSelectMediaserver="onSelectMediaserver"></MediaLibraryDeviceList>
 		<div v-else>TODO: Browse device content</div>
 	</div>

@@ -1,23 +1,21 @@
 <template>
-  <v-select
-    label="Renderer"
-    v-model="active_player"
-    :items="available_renderers"
-    item-text="name"
-    item-value="udn"
-    @change="selectRenderer"
-  ></v-select>
+  <div>
+    <select @change="selectRenderer" v-model="selected">
+      <option v-for="(renderer,i) in available_renderers" :value="renderer.udn" :key="i">{{renderer.name}}</option>
+    </select>
+  </div>
 </template>
-
 <script>
 import ControlPoint from "../upnpapi";
 import { mapState } from 'vuex'
 
 export default {
   data: () => ({
+    selected: null
   }),
   methods: {
-    selectRenderer(value) {
+    selectRenderer() {
+      let value = this.selected
       ControlPoint.setActiveRenderer(value).then(() => this.$store.dispatch('update_playback_info'))
     }
   },
@@ -25,10 +23,10 @@ export default {
     active_player: {
       get: function() {
         return this.$store.state.active_player
-       },
+      },
       set: function(udn) {
-         ControlPoint.setActiveRenderer(udn) 
-       }
+        ControlPoint.setActiveRenderer(udn)
+      }
 
     }
   }
