@@ -43,5 +43,10 @@ export default {
       .get(url)
       .then(response => response.data)
       .catch(error => console.log(error));
+  },
+  browseServer(url) {
+    return upnpApi
+      .get(url)
+      .then(response => response.data)
   }
 }
