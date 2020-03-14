@@ -11,8 +11,5 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-store.dispatch('update_available_renderers')
-store.dispatch('update_playback_info')
-
 let eventBus = new ControlPointEventBus(store)
 eventBus.run()
