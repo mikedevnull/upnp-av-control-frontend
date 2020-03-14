@@ -4,8 +4,6 @@ import App from './App.vue'
 import store from './store'
 import ControlPointEventBus from './upnp_event_bus.js'
 
-import '@mdi/font/css/materialdesignicons.css'
-
 Vue.config.productionTip = false
 
 new Vue({
