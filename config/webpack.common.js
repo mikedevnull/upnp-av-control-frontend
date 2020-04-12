@@ -9,6 +9,8 @@ const config = {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[contenthash].js'
   },
+
+
   module: {
     rules: [
       {
@@ -50,6 +52,9 @@ const config = {
     ]
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    },
     extensions: [
       '.js',
       '.vue'
