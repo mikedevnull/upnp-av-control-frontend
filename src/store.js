@@ -39,6 +39,11 @@ const store = new Vuex.Store({
       context.commit('set_active_player', playbackInfo.player)
       context.commit('set_volume', playbackInfo.volume)
     }
+  },
+  getters: {
+    getMediaServerByUDN: (state) => (udn) => {
+      return state.available_servers.find(server => server.udn === udn);
+    }
   }
 })
 

@@ -2,23 +2,19 @@
   <div>
     <h3>Mediaservers</h3>
     <ol v-for="server in available_servers" :key="server.udn">
-      <li><a href="#" @click="selectServer(server)">{{server.name}}</a></li>
+      <li>
+        <router-link :to="{name: 'browse', params: {udn: server.udn}}">{{server.friendly_name}}</router-link>
+      </li>
     </ol>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
-  data: () => ({
-  }),
-  methods: {
-    selectServer: function(device) {
-      this.$emit('onSelectMediaserver', device)
-    },
-  },
-  computed: {...mapState(['available_servers']),
-  }
+  data: () => ({}),
+  methods: {},
+  computed: { ...mapState(["available_servers"]) }
 };
 </script>
