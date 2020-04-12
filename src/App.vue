@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TheAppBar></TheAppBar>
     <main class="mdc-top-app-bar--fixed-adjust">
       <router-link :to="{name: 'media'}">Media</router-link>
       <router-view></router-view>
@@ -8,10 +9,11 @@
 </template>
 
 <script>
+import TheAppBar from "./components/TheAppBar";
 
 export default {
   name: "App",
-  components: {},
+  components: { TheAppBar },
   data: () => ({
     drawer: null
 
