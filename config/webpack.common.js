@@ -34,7 +34,15 @@ const config = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              webpackImporter: false,
+              sassOptions: {
+                includePaths: ['./node_modules']
+              },
+            }
+          }
         ]
       },
       {
