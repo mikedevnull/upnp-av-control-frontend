@@ -18,7 +18,7 @@ export default {
     const url = '/library/devices';
     return upnpApi
       .get(url)
-      .then(response => response.data.data)
+      .then(response => response.data)
       .catch(error => console.log(error));
   },
   setActiveRenderer(udn) {
@@ -44,9 +44,16 @@ export default {
       .then(response => response.data)
       .catch(error => console.log(error));
   },
-  browseServer(url) {
+  browseServer(udn, objectID) {
+    const url = `/library/${udn}/browse`;
+    let params = {};
+    if (objectID !== undefined) {
+      params = { objectID: objectID }
+      console.log(objectID)
+    }
+
     return upnpApi
-      .get(url)
+      .get(url, { params })
       .then(response => response.data)
   }
 }
