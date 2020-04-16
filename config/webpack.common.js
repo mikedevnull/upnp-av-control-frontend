@@ -72,6 +72,7 @@ const config = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: require('html-webpack-template'),
+      mobile: true,
       inject: false,
       appMountId: 'app',
       filename: 'index.html'
