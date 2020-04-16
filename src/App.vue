@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mdc-typography">
     <TheAppBar></TheAppBar>
     <main class="mdc-top-app-bar--fixed-adjust">
       <router-link :to="{name: 'media'}">Media</router-link>
@@ -21,7 +21,8 @@ export default {
   })
 };
 </script>
-<style>
+<style lang="scss">
+@use "@material/typography/mdc-typography";
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 body {
