@@ -11,13 +11,15 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:vue/essential"
+    "plugin:vue/essential",
+    "plugin:jest/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
   "plugins": [
-    "vue"
+    "vue",
+    "jest"
   ]
 }
