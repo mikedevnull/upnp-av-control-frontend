@@ -49,7 +49,17 @@ export default {
     let params = {};
     if (objectID !== undefined) {
       params = { objectID: objectID }
-      console.log(objectID)
+    }
+
+    return upnpApi
+      .get(url, { params })
+      .then(response => response.data)
+  },
+  getObjectMetadata(udn, objectID) {
+    const url = `/library/${udn}/metadata`;
+    let params = {};
+    if (objectID !== undefined) {
+      params = { objectID: objectID }
     }
 
     return upnpApi
