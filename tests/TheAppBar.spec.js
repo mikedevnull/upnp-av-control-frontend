@@ -1,9 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 import TheAppBar from '@/components/TheAppBar.vue'
+
 
 describe('TheAppBar.vue', () => {
   it('renders correctly', () => {
-    const wrapper = mount(TheAppBar);
+    const wrapper = mount(TheAppBar, { stubs: { RouterLink: RouterLinkStub } });
     expect(wrapper.element).toMatchSnapshot();
     wrapper.destroy();
   })
