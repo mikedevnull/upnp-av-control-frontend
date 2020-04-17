@@ -1,8 +1,10 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { shallowMount, createLocalVue, RouterLinkStub } from '@vue/test-utils'
 import MediaLibraryDeviceList from '@/components/MediaLibraryDeviceList.vue'
 import Vuex from 'vuex'
+
 const localVue = createLocalVue()
 localVue.use(Vuex)
+
 
 describe('MediaLibraryDeviceList.vue', () => {
   let state;
@@ -16,8 +18,18 @@ describe('MediaLibraryDeviceList.vue', () => {
   })
 
 
-  it('renders li for each item in props.items', () => {
-    const wrapper = shallowMount(MediaLibraryDeviceList, { store, localVue, stubs: ['router-link', 'router-view'] });
-    expect(wrapper.findAll('li')).toHaveLength(2);
+  it('renders links for each item in props.items', () => {
+    const wrapper = shallowMount(MediaLibraryDeviceList, { store, localVue, stubs: { RouterLink: RouterLinkStub } });
+    const links = wrapper.findAll(RouterLinkStub)
+    expect(links).toHaveLength(2);
+
+    const routeTarget0 = { name: 'browse', params: { udn: '1234-5678' } }
+    expect(links.at(0).text()).toBe('FooServer');
+    expect(links.at(0).props().to).toStrictEqual(routeTarget0);
+
+    const routeTarget1 = { name: 'browse', params: { udn: 'abcd' } }
+    expect(links.at(1).text()).toBe('BarServer');
+    expect(links.at(1).props().to).toStrictEqual(routeTarget1);
+
   })
 })
