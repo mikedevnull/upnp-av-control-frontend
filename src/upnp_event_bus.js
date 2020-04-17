@@ -3,16 +3,22 @@ function websocket_url(socket_path) {
   return ((loc.protocol === "https:") ? "wss://" : "ws://") + loc.host + loc.pathname + socket_path;
 }
 
+function createWebsocket(url) {
+  return new WebSocket(url);
+}
+
 class ControlPointEventBus {
-  constructor(store) {
+  constructor(store, socketFactory = createWebsocket) {
     this.store = store;
-    this.socketUrl = websocket_url('ws/events');
+    this.socketUrl = websocket_url('api/ws/events');
+    this.socketFactory = socketFactory;
     this.socket = null;
     this.state = 'closed'
   }
+
   run() {
     this.updateStoreData();
-    this.socket = new WebSocket('ws://localhost:8000/ws/events');
+    this.socket = this.socketFactory('ws://localhost:8000/ws/events');
     this.socket.onmessage = event => { this.handleMessage(event); };
   }
 
