@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseURL = '/api';
 
-var upnpApi = axios.create({
+export const upnpApi = axios.create({
   baseURL
 });
 
@@ -11,15 +11,13 @@ export default {
     const url = '/player/devices';
     return upnpApi
       .get(url)
-      .then(response => response.data.data)
-      .catch(error => console.log(error));
+      .then(response => response.data.data);
   },
   getLibraryDevices() {
     const url = '/library/devices';
     return upnpApi
       .get(url)
-      .then(response => response.data)
-      .catch(error => console.log(error));
+      .then(response => response.data);
   },
   setActiveRenderer(udn) {
     const url = '/player/device';
@@ -27,22 +25,19 @@ export default {
       .put(url, {
         udn: udn
       })
-      .catch(error => console.log(error));
   },
   setCurrentVolume(volume_percent) {
     const url = '/player/volume';
     return upnpApi
       .put(url, {
         volume_percent: volume_percent
-      })
-      .catch(error => console.log(error));
+      });
   },
   getCurrentPlaybackInfo() {
     const url = '/player';
     return upnpApi
       .get(url)
-      .then(response => response.data)
-      .catch(error => console.log(error));
+      .then(response => response.data);
   },
   browseServer(udn, objectID) {
     const url = `/library/${udn}/browse`;
@@ -53,7 +48,7 @@ export default {
 
     return upnpApi
       .get(url, { params })
-      .then(response => response.data)
+      .then(response => response.data);
   },
   getObjectMetadata(udn, objectID) {
     const url = `/library/${udn}/metadata`;
@@ -64,6 +59,6 @@ export default {
 
     return upnpApi
       .get(url, { params })
-      .then(response => response.data)
+      .then(response => response.data);
   }
 }
