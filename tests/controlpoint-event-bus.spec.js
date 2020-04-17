@@ -1,6 +1,6 @@
 import { createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
-import ControlPointEventBus from '@/upnp_event_bus.js'
+import ControlPointEventBus from '@/controlpoint-event-bus.js'
 
 
 const localVue = createLocalVue()
