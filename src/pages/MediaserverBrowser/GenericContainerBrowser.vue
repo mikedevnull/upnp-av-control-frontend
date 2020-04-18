@@ -55,6 +55,11 @@ export default {
       return "";
     }
   },
+  watch: {
+    item: async function() {
+      await this.loadData();
+    }
+  },
   mounted: function() {
     this.mdcList = new MDCList(document.querySelector(".mdc-list", this.$el));
     this.mediaserver = this.$store.getters.getMediaServerByUDN(this.udn);
