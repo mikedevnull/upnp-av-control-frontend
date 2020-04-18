@@ -34,7 +34,6 @@ import LoadSpinner from "@/components/LoadSpinner";
 
 export default {
   mixins: [ContainerBrowserMixin],
-  props: ["item", "udn"],
   components: { LoadSpinner },
   data() {
     return {
@@ -54,11 +53,6 @@ export default {
         return this.mediaserver.friendly_name;
       }
       return "";
-    }
-  },
-  watch: {
-    item: async function() {
-      await this.loadData();
     }
   },
   mounted: function() {
