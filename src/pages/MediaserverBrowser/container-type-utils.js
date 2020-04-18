@@ -42,10 +42,19 @@ function imageForItem(item) {
   }
 }
 
+function itemBrowseChildrenRoute(udn, objectID) {
+  return {
+    name: "browse",
+    params: { udn },
+    query: { objectID }
+  };
+}
+
 export default {
   iconForUpnpClass,
   filterByUpnpClass,
   imageForItem,
+  itemBrowseChildrenRoute,
   folderIcon,
   albumIcon,
   personIcon,
