@@ -32,7 +32,6 @@ describe('getters', () => {
   it('should return a media server given by its UDN', () => {
     const state = { available_servers: [{ udn: 'foo' }, { udn: 'bar' }, { udn: '1234' }] }
     let server1 = getters.getMediaServerByUDN(state)('foo');
-    console.log(server1)
     expect(server1.udn).toBe('foo');
     let server2 = getters.getMediaServerByUDN(state)('987');
     expect(server2).toBeUndefined();

@@ -25,15 +25,9 @@ export default {
   mixins: [ContainerBrowserMixin],
   props: ["item", "udn"],
   components: { LoadSpinner, CoverImageGrid, TrackList },
-  data() {
-    return {};
-  },
   computed: {
     coverArt() {
-      if (this.item.albumArtURI) {
-        return "/api" + this.item.albumArtURI;
-      }
-      return utils.albumIcon;
+      return utils.imageForItem(this.item);
     }
   }
 };
