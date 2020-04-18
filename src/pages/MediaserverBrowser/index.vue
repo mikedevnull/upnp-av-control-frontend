@@ -7,6 +7,7 @@
 <script>
 import ControlPoint from "@/upnpapi.js";
 import GenericContainerBrowser from "./GenericContainerBrowser";
+import ArtistBrowser from "./ArtistBrowser";
 import AlbumBrowser from "./AlbumBrowser";
 import LoadSpinner from "@/components/LoadSpinner";
 
@@ -15,6 +16,7 @@ export default {
   components: {
     LoadSpinner,
     GenericContainerBrowser,
+    ArtistBrowser,
     AlbumBrowser
   },
   props: {
@@ -40,6 +42,8 @@ export default {
       const upnpclass = this.item.upnpclass;
       if (upnpclass.startsWith("object.container.person.musicArtist")) {
         return ArtistBrowser;
+      } else if (upnpclass.startsWith("object.container.album.musicAlbum")) {
+        return AlbumBrowser;
       } else {
         return GenericContainerBrowser;
       }
