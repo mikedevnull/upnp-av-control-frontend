@@ -9,11 +9,15 @@
       </div>
       <div class="browser-view__children">
         <ul class="mdc-list">
-          <li class="mdc-list-item" tabindex="0" v-for="child in children" :key="child.id">
-            <span class="mdc-list-item__graphic">
-              <img class="mdc-image-list__image" :src="iconForItem(child)" />
-            </span>
-            <router-link :to="itemBrowseChildrenRoute(udn, child.id)">
+          <li
+            v-for="(child, index) in children"
+            :key="child.id"
+            :tabindex="index == 0 ? index : false"
+          >
+            <router-link class="mdc-list-item" :to="itemBrowseChildrenRoute(udn, child.id)">
+              <span class="mdc-list-item__graphic">
+                <img class="mdc-image-list__image" :src="iconForItem(child)" />
+              </span>
               <span class="mdc-list-item__text">{{child.title}}</span>
             </router-link>
           </li>
