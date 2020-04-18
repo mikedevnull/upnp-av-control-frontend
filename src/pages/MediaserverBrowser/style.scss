@@ -84,7 +84,17 @@
   }
   
 }
+
+.browser-view__load-indicator {
+  @include layout-grid.cell(
+    desktop, 
+    12,
+    map-get(layout-grid.$default-gutter, desktop)
+  );
+}
+
 .browser-view__section-heading {
+    @include typography.typography(headline6);
     margin-top: 0;
     margin-bottom: 8px;
 }
