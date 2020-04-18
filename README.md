@@ -1,5 +1,6 @@
 UPnP AV Control Frontend
 [![Build Status](https://travis-ci.com/mikedevnull/upnp-av-control-frontend.svg?branch=master)](https://travis-ci.com/mikedevnull/upnp-av-control-frontend)
+[![codecov](https://codecov.io/gh/mikedevnull/upnp-av-control-frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/mikedevnull/upnp-av-control-frontend)
 ====
 
 Web frontend to [upnp-av-control](https://github.com/mikedevnull/upnp-av-control), a web-based API to control UPnP AV devices.
