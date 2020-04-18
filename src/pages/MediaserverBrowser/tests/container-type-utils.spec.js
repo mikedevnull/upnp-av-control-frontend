@@ -60,3 +60,41 @@ describe('filterByUpnpClass', () => {
     expect(result.length).toBe(0);
   })
 })
+
+describe('guessImageForParentItem', () => {
+  const children = [{}, { albumArtURI: '/bar' }]
+  it('should return item albumArt if available', () => {
+    let item = { albumArtURI: '/foo' }
+    let result = utils.guessImageForParentItem(item, children);
+    expect(result).toBe(utils.imageForItem(item));
+  })
+
+  it('should return item artistDiscography if available', () => {
+    let item = { artistDiscographyURI: '/foo' }
+    let result = utils.guessImageForParentItem(item, children);
+    expect(result).toBe(utils.imageForItem(item));
+  })
+
+  it('should return child image if available', () => {
+    let item = {}
+    let result = utils.guessImageForParentItem(item, children);
+    expect(result).toBe(utils.imageForItem(children[1]));
+  })
+
+  it('should return default icon as fallback', () => {
+    let item = { upnpclass: 'object.unkown' }
+    let result = utils.guessImageForParentItem(item, [{}]);
+    expect(result).toBe(utils.imageForItem(item));
+  })
+
+  it('should work with undefined children', () => {
+    let item = { upnpclass: 'object.unkown' }
+    let result = utils.guessImageForParentItem(item);
+    expect(result).toBe(utils.imageForItem(item));
+  })
+
+  it('should work with undefined item', () => {
+    let result = utils.guessImageForParentItem();
+    expect(result).toBe(utils.fallbackIcon);
+  })
+})

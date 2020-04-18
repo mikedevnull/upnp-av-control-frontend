@@ -28,7 +28,7 @@ function filterByUpnpClass(items, upnpclass) {
   return [];
 }
 
-function imageForItem(item) {
+function imageURIFromItem(item) {
   if (item) {
     if (item.albumArtURI) {
       return '/api' + item.albumArtURI;
@@ -36,10 +36,41 @@ function imageForItem(item) {
     else if (item.artistDiscographyURI) {
       return '/api' + item.artistDiscographyURI;
     }
+  }
+}
+
+function imageForItem(item) {
+  if (item) {
+    let uri = imageURIFromItem(item);
+    if (uri) {
+      return uri;
+    }
     else {
       return iconForUpnpClass(item.upnpclass);
     }
   }
+}
+
+function imageURIFromFirstItem(items) {
+  if (items) {
+    let item = items.find(x => imageURIFromItem(x) !== undefined)
+    return imageURIFromItem(item);
+  }
+}
+
+function guessImageForParentItem(item, children) {
+  let itemImage = imageURIFromItem(item);
+  if (itemImage) {
+    return itemImage;
+  }
+  let childImage = imageURIFromFirstItem(children);
+  if (childImage) {
+    return childImage;
+  }
+  if (item) {
+    return iconForUpnpClass(item.upnpclass);
+  }
+  return folderIcon;
 }
 
 function itemBrowseChildrenRoute(udn, objectID) {
@@ -55,6 +86,7 @@ export default {
   filterByUpnpClass,
   imageForItem,
   itemBrowseChildrenRoute,
+  guessImageForParentItem,
   folderIcon,
   albumIcon,
   personIcon,
