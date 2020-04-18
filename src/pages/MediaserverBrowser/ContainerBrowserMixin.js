@@ -2,6 +2,7 @@ import ControlPoint from "@/upnpapi.js";
 import utils from "./container-type-utils";
 
 export default {
+  props: ['item', 'udn'],
   data() {
     return {
       children: []
@@ -27,6 +28,11 @@ export default {
     },
     itemBrowseChildrenRoute(udn, objectID) {
       return utils.itemBrowseChildrenRoute(udn, objectID);
+    }
+  },
+  watch: {
+    item: async function () {
+      await this.loadData();
     }
   },
   mounted: function () {

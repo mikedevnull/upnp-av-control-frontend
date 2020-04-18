@@ -22,7 +22,6 @@ import utils from "./container-type-utils";
 
 export default {
   mixins: [ContainerBrowserMixin],
-  props: ["item", "udn"],
   components: { TrackList, LoadSpinner, CoverImageGrid },
   data() {
     return {};

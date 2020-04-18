@@ -78,7 +78,7 @@ describe('CoverImageGrid.vue', () => {
 })
 
 describe('ContainerBrowserMixin', () => {
-  const Component = { template: '<div></div>', props: ['item', 'udn'], mixins: [ContainerBrowserMixin] };
+  const Component = { template: '<div></div>', mixins: [ContainerBrowserMixin] };
   const children = [
     { name: 'foo', upnpclass: 'object.container.album.musicAlbum' },
     { name: 'item2', upnpclass: 'object.item.audioItem' },
