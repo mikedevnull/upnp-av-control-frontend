@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     coverArt() {
-      return utils.imageForItem(this.item);
+      return utils.guessImageForParentItem(this.item, this.children);
     }
   }
 };

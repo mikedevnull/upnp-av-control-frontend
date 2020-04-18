@@ -26,7 +26,7 @@ export default {
   components: { LoadSpinner, CoverImageGrid, TrackList },
   computed: {
     coverArt() {
-      return utils.imageForItem(this.item);
+      return utils.guessImageForParentItem(this.item, this.children);
     }
   }
 };
