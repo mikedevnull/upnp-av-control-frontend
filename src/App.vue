@@ -28,4 +28,9 @@ export default {
 body {
   margin: 0;
 }
+
+.main-content {
+  max-width: 1024px;
+  margin: auto;
+}
 </style>
