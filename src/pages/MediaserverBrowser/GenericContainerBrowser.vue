@@ -1,6 +1,6 @@
 <template>
   <div class="browser-view">
-    <LoadSpinner v-if="!ready" class="mdc-layout-grid__cell--span-12"></LoadSpinner>
+    <LoadSpinner v-if="!ready" class="browser-view__load-indicator"></LoadSpinner>
     <template v-else>
       <div class="browser-view__details">
         <img class="browser-view__artwork" :src="folderIcon" />
