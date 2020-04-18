@@ -1,4 +1,5 @@
-@use '@material/elevation';
+@use '@material/theme';
+@use '@material/shape';
 @use '@material/layout-grid';
 @use '@material/typography';
 
@@ -55,11 +56,15 @@
   }
 }
 .browser-view__artwork {
-  @include elevation.elevation(1);
-  background-color: #ccc;
-  width: 100%;
+  border: 1px solid;
+  border-color: rgba(theme.prop-value(on-surface), .3);
+  border-radius: shape.$medium-component-radius;
+  border-radius: 8px;
+  
+  width: 200px;
+  height: 200px;
+
   margin-bottom: 8px;
-  padding: 8px;
 }
 .browser-view__children {
   @include layout-grid.cell(
@@ -71,7 +76,7 @@
   @media (min-width: layout-grid.breakpoint-min(tablet)) {
     @include layout-grid.cell(
       tablet, 
-      4,
+      6,
       map-get(layout-grid.$default-gutter, tablet)
     );
   }
