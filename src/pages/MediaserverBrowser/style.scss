@@ -1,0 +1,30 @@
+@use '@material/elevation';
+.browser-view {
+  padding-top: 42px;
+  display: flex;
+  justify-content: space-between;
+}
+.browser-view__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
+  margin-right: 16px;
+  max-width: 216px;
+  text-align: center;
+}
+.browser-view__artwork {
+  @include elevation.elevation(1);
+  background-color: #ccc;
+  width: 200px;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+.browser-view__children {
+  flex-grow: 1;
+  margin: 8px;
+}
+.browser-view__section-heading {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
