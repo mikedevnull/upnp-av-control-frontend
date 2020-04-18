@@ -26,11 +26,7 @@ export default {
       });
     },
     itemBrowseChildrenRoute(udn, objectID) {
-      return {
-        name: "browse",
-        params: { udn },
-        query: { objectID }
-      };
+      return utils.itemBrowseChildrenRoute(udn, objectID);
     }
   },
   mounted: function () {

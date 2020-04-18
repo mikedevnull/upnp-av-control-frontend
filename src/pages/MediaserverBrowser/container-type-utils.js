@@ -33,8 +33,8 @@ function imageForItem(item) {
     if (item.albumArtURI) {
       return '/api' + item.albumArtURI;
     }
-    else if (item.aristDiscographyURI) {
-      return '/api' + item.aristDiscographyURI;
+    else if (item.artistDiscographyURI) {
+      return '/api' + item.artistDiscographyURI;
     }
     else {
       return iconForUpnpClass(item.upnpclass);
@@ -58,5 +58,7 @@ export default {
   folderIcon,
   albumIcon,
   personIcon,
+  trackIcon,
+  fallbackIcon: folderIcon
 }
 

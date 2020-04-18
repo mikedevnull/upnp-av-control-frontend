@@ -11,8 +11,10 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest",
     "^.+\\.js$": "babel-jest",
+    "^.+\\.svg$": "<rootDir>/tests/svgTransform.js"
   },
   moduleNameMapper: {
+    "^@/assets/(.*)": "<rootDir>/src/assets/$1",
     "^@/(.*)$": "<rootDir>/src/$1"
   }
 };
