@@ -11,7 +11,8 @@ const routes = [
   {
     path: '/media/:udn', name: 'browse', component: MediaserverBrowser,
     props: route => ({ udn: route.params.udn, objectID: route.query.objectID })
-  }
+  },
+  { path: '/', redirect: { name: 'media' } }
 ]
 const router = new VueRouter({ routes: routes })
 
