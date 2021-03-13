@@ -95,10 +95,8 @@ class EventBusConnection(object):
 
 class WebsocketEventBus(object):
     def __init__(self, connector: EventBusConnector):
-        self._queue = asyncio.Queue()
         self._notification_sockets = []
         self._connector = connector
-        self._task = None
 
     async def accept(self, websocket):
         await websocket.accept()
