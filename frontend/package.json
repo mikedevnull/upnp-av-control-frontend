@@ -9,7 +9,11 @@
     "lint": "vue-cli-service lint",
     "dev": "concurrently \"npm run dev-frontend\" \"npm run dev-backend\"",
     "dev-backend": "uvicorn upnpavcontrol.web:app --debug --reload --root-path /api --log-config=../uvicorn-log-config.yml",
-    "dev-frontend": "vue-cli-service serve"
+    "dev-frontend": "vue-cli-service serve",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "yargs-parser": "15.0.1"
   },
   "dependencies": {
     "axios": "^0.21.0",
